@@ -122,6 +122,7 @@ def _update_monitor(client, args, up_monitor, my_monitor):
                 client.update_monitor(up_monitor['id'], changes)
             except HTTPError:
                 LOG.exception("Monitor %(name)s failed to update", up_monitor)
+                LOG.info("Attempted request: ", changes)
 
     else:
         LOG.debug("No changes to monitor %(name)s id: %(id)s", up_monitor)
